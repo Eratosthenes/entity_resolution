@@ -43,7 +43,7 @@ def main(words, word_pairs):
     for word in words:
         fuzz.ratio(misspelling, word)
     elapsed = time.time() - start
-    worst_case = round(1000 * elapsed / len(word_pairs), 2)
+    worst_case = round(1000 * elapsed, 2)
 
     # calculate average case with fast lookup
     rows = []        
@@ -68,7 +68,7 @@ def main(words, word_pairs):
         floatfmt='.3f'))
     
     print('\nnaive worst case: {} ms'.format(worst_case))
-    print('avg time/word = {} ms'.format(avg_case))
+    print('fast lookup avg time/word = {} ms'.format(avg_case))
     print('speedup over naive case = {}x'.format(speedup))
 
 if __name__ == '__main__':
