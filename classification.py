@@ -18,13 +18,13 @@ def build_trie(words):
 def find_best_match(misspelling, chunk):
     """ find best match in a chunk """
     best_ratio, best_word = 0, '' 
-    ratios = []
     for word in chunk:
         ratio = fuzz.ratio(misspelling, word) / 100
-        ratios.append((ratio, word))
         if ratio > best_ratio:
             best_ratio = ratio
             best_word = word
+        if ratio == 1:
+            break
 
     return best_ratio, best_word
 
